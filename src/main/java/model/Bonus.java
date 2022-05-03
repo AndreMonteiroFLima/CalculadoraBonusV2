@@ -1,6 +1,9 @@
 package model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Bonus {
+    @NotNull
     private String tipo;
     private double valor;
 

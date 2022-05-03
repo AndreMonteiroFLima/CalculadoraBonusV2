@@ -1,8 +1,10 @@
 package model;
 
 import interfaces.ICalculadoraBonus;
+import org.jetbrains.annotations.NotNull;
 
 public class Funcionario {
+
     private String nome;
     private double salarioBase;
     private double salario;
@@ -32,7 +34,10 @@ public class Funcionario {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(double salario) throws IllegalArgumentException{
+        if(salario<=0){
+            throw new IllegalArgumentException("Salario não pode ser menor ou igual a zero");
+        }
         this.salario = salario;
     }
 
@@ -52,7 +57,7 @@ public class Funcionario {
         this.distanciaDoTrablaho = distanciaDoTrablaho;
     }
 
-    public void calculadoraSalario(ICalculadoraBonus calculadoraBonus){
+    public void calculadoraSalario(@NotNull ICalculadoraBonus calculadoraBonus){
         calculadoraBonus.calculaBonus(this);
         this.salario=this.salarioBase*bonus.getValor();
     }
