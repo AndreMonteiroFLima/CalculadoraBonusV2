@@ -1,7 +1,7 @@
 package model;
 
-import interfaces.ICalculadoraBonus;
 import org.jetbrains.annotations.NotNull;
+import service.AnalizaBonusService;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -64,8 +64,8 @@ public class Funcionario {
         this.distanciaDoTrablaho = distanciaDoTrablaho;
     }
 
-    public void calculadoraSalario(@NotNull AnalizaBonusFuncionario analizaBonusFuncionario) {
-        analizaBonusFuncionario.verificaSePossuiBonus(this);
+    public void calculadoraSalario(@NotNull AnalizaBonusService analizaBonusService) {
+        analizaBonusService.verificaSePossuiBonus(this);
         double valorBonus=0;
         for (Bonus bonus : bonus) {
             valorBonus+=bonus.getValor();
